@@ -16,11 +16,11 @@ class Solution {
 
     private fun addTwoNumbersInternal(l1: ListNode?, l2: ListNode?, hasOverflow: Boolean): ListNode? {
         var currentValue = if (l1 != null && l2 != null) {
-            l1.value + l2.value
+            l1.`val` + l2.`val`
         } else if (l1 != null) {
-            l1.value
+            l1.`val`
         } else if (l2 != null) {
-            l2.value
+            l2.`val`
         } else {
             0
         }
@@ -29,7 +29,7 @@ class Solution {
             currentValue += 1
         }
 
-        if (l1?.value == null && l2?.value == null && currentValue == 0) {
+        if (l1?.`val` == null && l2?.`val` == null && currentValue == 0) {
             return null
         }
 
@@ -44,8 +44,4 @@ class Solution {
 
         return resultCurrentNode
     }
-}
-
-class ListNode(var value: Int) {
-    var next: ListNode? = null
 }

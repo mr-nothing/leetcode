@@ -32,7 +32,7 @@ class P2Test {
         val result = mutableListOf<Int>()
         var currentNode = node
         while (true) {
-            result.add(currentNode.value)
+            result.add(currentNode.`val`)
             currentNode.next?.let {
                 currentNode = it
             } ?: break
