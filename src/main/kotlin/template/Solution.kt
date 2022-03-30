@@ -1,0 +1,4 @@
+package template
+
+class Solution {
+}
