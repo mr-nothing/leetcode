@@ -1,35 +1,29 @@
 package p2
 
-/**
- * Example:
- * var li = ListNode(5)
- * var v = li.`val`
- * Definition for singly-linked list.
- * class ListNode(var `val`: Int) {
- *     var next: ListNode? = null
- * }
- */
+import common.ListNode
+
 class Solution {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode {
         return addTwoNumbersInternal(l1, l2, false)!!
     }
 
     private fun addTwoNumbersInternal(l1: ListNode?, l2: ListNode?, hasOverflow: Boolean): ListNode? {
-        var currentValue = if (l1 != null && l2 != null) {
-            l1.value + l2.value
-        } else if (l1 != null) {
-            l1.value
-        } else if (l2 != null) {
-            l2.value
-        } else {
-            0
-        }
+        var currentValue =
+            if (l1 != null && l2 != null) {
+                l1.`val` + l2.`val`
+            } else if (l1 != null) {
+                l1.`val`
+            } else if (l2 != null) {
+                l2.`val`
+            } else {
+                0
+            }
 
         if (hasOverflow) {
             currentValue += 1
         }
 
-        if (l1?.value == null && l2?.value == null && currentValue == 0) {
+        if (l1?.`val` == null && l2?.`val` == null && currentValue == 0) {
             return null
         }
 
@@ -44,8 +38,4 @@ class Solution {
 
         return resultCurrentNode
     }
-}
-
-class ListNode(var value: Int) {
-    var next: ListNode? = null
 }
