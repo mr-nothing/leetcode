@@ -2,15 +2,6 @@ package p1721
 
 import common.ListNode
 
-/**
- * Example:
- * var li = ListNode(5)
- * var v = li.`val`
- * Definition for singly-linked list.
- * class ListNode(var `val`: Int) {
- *     var next: ListNode? = null
- * }
- */
 class Solution {
     fun swapNodes(head: ListNode, k: Int): ListNode {
         var first: ListNode? = null
@@ -23,10 +14,14 @@ class Solution {
         var nodesCounter = 1 // This is one since k is not zero indexed
         var currentNode: ListNode = head
         // First run through linked list to get the first node to swap and the length of the list
-        while (currentNode.next != null) {
+        while (true) {
             if (nodesCounter == k) {
                 first = currentNode
             }
+            if (currentNode.next == null) {
+                break
+            }
+
             currentNode = currentNode.next!!
             nodesCounter++
         }
@@ -36,10 +31,14 @@ class Solution {
         nodesCounter = 1
         currentNode = head
         // Second run through linked list to get the second node to swap
-        while (currentNode.next != null) {
+        while (true) {
             if (nodesCounter == size - k + 1) {
                 last = currentNode
             }
+            if (currentNode.next == null) {
+                break
+            }
+
             currentNode = currentNode.next!!
             nodesCounter++
         }
