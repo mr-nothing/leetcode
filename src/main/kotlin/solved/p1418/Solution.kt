@@ -1,4 +1,4 @@
-package p1418
+package solved.p1418
 
 class Solution {
     fun displayTable(orders: List<List<String>>): List<List<String>> {
