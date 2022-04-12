@@ -1,5 +1,6 @@
 package p2
 
+import common.ListNode
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
@@ -12,32 +13,10 @@ class P2Test {
         TestInput(listOf(9, 9, 9, 9, 9, 9, 9), listOf(9, 9, 9, 9)) to TestOutput(listOf(8, 9, 9, 9, 0, 0, 0, 1))
     ).map { (input, output) ->
         dynamicTest("${input.l1} plus ${input.l2} should be equal to ${output.l}") {
-            val actual = Solution().addTwoNumbers(listToNode(input.l1), listToNode(input.l2))
+            val actual = Solution().addTwoNumbers(ListNode.from(input.l1), ListNode.from(input.l2))
 
-            assertEquals(output.l, nodeToList(actual))
+            assertEquals(output.l, ListNode.to(actual))
         }
-    }
-
-    private fun listToNode(digitsList: List<Int>): ListNode? {
-        val digit = digitsList.firstOrNull()
-        digit?.let {
-            val currentNode = ListNode(digit)
-            currentNode.next = listToNode(digitsList.subList(1, digitsList.size))
-            return currentNode
-        }
-        return null
-    }
-
-    private fun nodeToList(node: ListNode): List<Int> {
-        val result = mutableListOf<Int>()
-        var currentNode = node
-        while (true) {
-            result.add(currentNode.`val`)
-            currentNode.next?.let {
-                currentNode = it
-            } ?: break
-        }
-        return result
     }
 }
 
