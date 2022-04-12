@@ -1,4 +1,4 @@
-package unsolved.p1312
+package p1312
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DynamicTest
