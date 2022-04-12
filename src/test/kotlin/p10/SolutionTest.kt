@@ -1,4 +1,4 @@
-package unsolved.p10
+package p10
 
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory

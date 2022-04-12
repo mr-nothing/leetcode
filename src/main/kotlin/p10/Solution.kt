@@ -1,4 +1,4 @@
-package unsolved.p10
+package p10
 
 class Solution {
     fun isMatch(s: String, p: String): Boolean {
