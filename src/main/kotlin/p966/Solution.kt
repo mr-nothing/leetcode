@@ -1,26 +1,39 @@
 package p966
 
+/**
+ * We use putIfAbsent for lowercase and devoweled dictionaries because we are only interested in the first occurrence of
+ * transformed word.
+ * Let's say we have wordlist = (WoRd, WOrd, WoRD) and queries = (wOrd)
+ * originalDict will be     (WoRd, WOrd, WoRD)
+ * lowerCaseDict will be    (word -> WoRd)
+ * devoweledDict will be    (w*rd -> WoRd)
+ * That's because WOrd and WoRD will have the same lowerCAse and devoweled forms
+ */
 class Solution {
     fun spellchecker(wordlist: Array<String>, queries: Array<String>): Array<String> {
         val result = Array(queries.size) { "" }
 
-        val originalWords = mutableSetOf<String>()
-        val lowerCaseWords = mutableMapOf<String, String>()
-        val vowelFixedWords = mutableMapOf<String, String>()
+        val originalDict = mutableSetOf<String>() // just words from the original dictionary
+        val lowerCasedDict =
+            mutableMapOf<String, String>() // lowercase words from the original dictionary (WoRd -> word)
+        val devoweledDict =
+            mutableMapOf<String, String>() // lowercase words from the original dictionary with vowels replaced (WooOooORd -> w******rd)
 
+        // Initialize dictionaries
         for (word in wordlist) {
-            originalWords.add(word)
+            originalDict.add(word)
             val lowerCaseWord = word.lowercase()
-            lowerCaseWords.putIfAbsent(lowerCaseWord, word)
-            vowelFixedWords.putIfAbsent(devowel(lowerCaseWord), word)
+            lowerCasedDict.putIfAbsent(lowerCaseWord, word)
+            devoweledDict.putIfAbsent(devowel(lowerCaseWord), word)
         }
 
+        // Try to find in dictionaries in accordance with precedence
         for ((index, query) in queries.withIndex()) {
-            if (originalWords.contains(query)) {
+            if (originalDict.contains(query)) {
                 result[index] = query
             } else {
                 val lowerCaseQuery = query.lowercase()
-                result[index] = lowerCaseWords[lowerCaseQuery] ?: vowelFixedWords[devowel(lowerCaseQuery)] ?: ""
+                result[index] = lowerCasedDict[lowerCaseQuery] ?: devoweledDict[devowel(lowerCaseQuery)] ?: ""
             }
         }
         return result
