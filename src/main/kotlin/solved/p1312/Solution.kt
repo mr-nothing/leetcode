@@ -1,4 +1,4 @@
-package p1312
+package solved.p1312
 
 class Solution {
     fun minInsertions(s: String): Int {
