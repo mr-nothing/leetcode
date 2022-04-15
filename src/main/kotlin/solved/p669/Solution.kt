@@ -1,4 +1,4 @@
-package p669
+package solved.p669
 
 import common.TreeNode
 
