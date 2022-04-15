@@ -1,4 +1,4 @@
-package p700
+package solved.p700
 
 import common.TreeNode
 import org.junit.jupiter.api.Assertions
