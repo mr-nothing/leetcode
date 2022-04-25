@@ -1,4 +1,4 @@
-package p99
+package solved.p99
 
 import common.TreeNode
 import org.junit.jupiter.api.Assertions
