@@ -11,7 +11,7 @@ internal class SolutionTest {
         InputData(arrayOf(4, 2, 7, 1, 3), 2) to arrayOf(2, 1, 3),
         InputData(arrayOf(4, 2, 7, 1, 3), 5) to arrayOf(),
     ).map { (inputData, expected) ->
-        DynamicTest.dynamicTest("The node with root ${inputData.searchValue} of tree [${inputData.tree.joinToString()}] is [${expected.joinToString()}]") {
+        DynamicTest.dynamicTest("The subtree with root ${inputData.searchValue} from tree [${inputData.tree.joinToString()}] should be [${expected.joinToString()}]") {
             Assertions.assertEquals(
                 Solution().searchBST(TreeNode.from(inputData.tree.toList()), inputData.searchValue),
                 TreeNode.from(expected.toList())
