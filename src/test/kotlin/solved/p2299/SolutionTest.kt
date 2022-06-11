@@ -1,4 +1,4 @@
-package p2299
+package solved.p2299
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DynamicTest.dynamicTest

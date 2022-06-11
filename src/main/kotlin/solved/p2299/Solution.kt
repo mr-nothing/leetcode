@@ -1,4 +1,4 @@
-package p2299
+package solved.p2299
 
 class Solution {
     fun strongPasswordCheckerII(password: String): Boolean {
